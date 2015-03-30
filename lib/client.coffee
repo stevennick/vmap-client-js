@@ -6,4 +6,8 @@ class VMAPClient
 		withCredentials: true,
 		timeout: 0
 
+	@hello: ->
+		console.log('Hello world!')
+
+
 module.exports = VMAPClient
