@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/*
+bower_components/*
+lib/*
+vast-client.js
+src/*.js
+*.glue
