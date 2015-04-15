@@ -1,7 +1,8 @@
 .DS_Store
 node_modules/*
 bower_components/*
-lib/*
+lib/*.js
 vast-client.js
 src/*.js
+build/*
 *.glue

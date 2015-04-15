@@ -19,52 +19,54 @@ class VMAPParser
         @vent.emit 'VMAP-error', errorCode
         VMAPUtil.track(templates, errorCode)
 
+    @_parseSource: (err, xml) ->
+        return cb(err) if err?
+        response = new VMAPResponse()
+
+        unless xml?.documentElement? and xml.documentElement.nodeName is "vmap:VMAP"
+            return cb()
+
+        for node in xml.documentElement.childNodes
+            if node.nodeName is 'Error'
+                response.errorURLTemplates.push (@parseNodeText node)
+
+        for node in xml.documentElement.childNodes
+            switch node.nodeName
+                when "vmap:AdBreak"
+                    adBreak = @parseAdBreakElement node
+                    if adBreak?
+                        response.adbreaks.push adbreak
+                    else
+                        @track(response.errorURLTemplates, ERRORCODE: 101)
+
+                when "vmap:Extensions"
+                    # TODO: implement extension support
+                    extensions = @parseExtensionElement node
+
+        complete = (errorAlreadyRaised = false) =>
+            return unless response
+
+            if response.adbreaks.length == 0
+                # No AdBreak Response
+                # The VMAP <Error> element is optional but if included, the video player must send a request to the URI
+                # provided when the VMAP response returns an empty InLine response after a chain of one or more wrapper ads.
+                # If an [ERRORCODE] macro is included, the video player should substitute with error code 303.
+                @track(response.errorURLTemplates, ERRORCODE: 303) unless errorAlreadyRaised
+                response = null
+            cb(null, response)
+
+        complete()
+
 	@_parse: (url, parentURLs, options, cb) ->
     	if not cb
             cb = options if typeof options is 'function'
             options = {}
 
         # Process url with defined filter
-        url = filter(url) for filter in URLTemplateFilters
+        # url = filter(url) for filter in URLTemplateFilters
 
     	URLHandler.get url, options, (err, xml) =>
-            return cb(err) if err?
-
-            response = new VMAPResponse()
-
-            unless xml?.documentElement? and xml.documentElement.nodeName is "vmap:VMAP"
-            	return cb()
-
-            for node in xml.documentElement.childNodes
-            	if node.nodeName is 'Error'
-            		response.errorURLTemplates.push (@parseNodeText node)
-
-            for node in xml.documentElement.childNodes
-            	switch node.nodeName
-            		when "vmap:AdBreak"
-	            		adBreak = @parseAdBreakElement node
-	            		if adBreak?
-	            			response.adbreaks.push adbreak
-	            		else
-	            			@track(response.errorURLTemplates, ERRORCODE: 101)
-
-	            	when "vmap:Extensions"
-	            		# TODO: implement extension support
-	            		extensions = @parseExtensionElement node
-
-            complete = (errorAlreadyRaised = false) =>
-            	return unless response
-
-            	if response.adbreaks.length == 0
-            		# No AdBreak Response
-            		# The VMAP <Error> element is optional but if included, the video player must send a request to the URI
-                    # provided when the VMAP response returns an empty InLine response after a chain of one or more wrapper ads.
-                    # If an [ERRORCODE] macro is included, the video player should substitute with error code 303.
-                    @track(response.errorURLTemplates, ERRORCODE: 303) unless errorAlreadyRaised
-                    response = null
-                cb(null, response)
-
-            complete()
+            @_parseSource err, xml
 
     @parseExtensionElement: (extensionsElement) ->
     	return null
