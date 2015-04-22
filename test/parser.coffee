@@ -1,22 +1,35 @@
-should = require 'should'
 path = require 'path'
-VASTParser = require '../src/parser'
+sys = require 'sys' # Debug only
+chai = require 'chai'
+expect = chai.expect
+chai.should()
+
+
+{VMAPParser} = require '../lib/parser'
+
+puts = (obj) ->
+  sys.puts(sys.inspect(obj))
 
 urlFor = (relpath) ->
-	return 'file://' + path.resolve(path.dirname(module.filename), relpath)
+  return 'file://' + path.resolve(path.dirname(module.filename), relpath)
+
 
 describe 'VMAPParser', ->
-	describe '#parse', ->
-		@response = null
-		_response = null
+  describe '#parser', ->
+    @options = {"foo":"bar"}
+    @response = null
+    _response = null
+    # sys.puts(sys.inspect(urlFor('PlayerTestVMAP.xml')))
 
-		before(done) =>
-			VMAPParser.parse urlFor('test.xml'), (@response) =>
-				_response = @response
-				done()
+    before (done) =>
+      VMAPParser.parse urlFor('PlayerTestVMAP.xml'), @options, (@response) =>
+        # puts @response
+        _response = @response
+        done()
 
-		after () =>
-			# Do nothing
+    after () =>
+      # Do nothing
 
-		it 'should have called', =>
-			1.sholud.equal 1
+    it 'should not empty', =>
+      @response.should.not.empty
+
