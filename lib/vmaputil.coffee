@@ -30,4 +30,4 @@ class VMAPUtil
 
         return URLs
 
-module.exports = VASTUtil
+module.exports = VMAPUtil

@@ -11,18 +11,20 @@
     },
     "scripts":
     {
-        "test": "mocha --compilers coffee:coffee-script/register --reporter spec test/*.coffee",
+        "test": "mocha --compilers coffee:coffee-script/register --timeout 5000",
         "bundle": "browserify -s VMAP -c 'coffee -scb' src/index.coffee -o vmap-client.js"
     },
     "devDependencies":
     {
-        "mocha": "1.18.2",
-        "should": "3.2.0",
-        "xmldom": "0.1.19"
+        "coffee-script": "*",
+        "mocha": "*",
+        "should": "*",
+        "chai": "*",
+        "xmldom": "*"
     },
     "dependencies":
     {
-        "coffee-script": "~1.7.1",
-        "browserify": "4.2.1"
+        "coffee-script": "*",
+        "vast-client-js": "git://github.com/stevennick/vast-client-js.git#master"
     }
 }
