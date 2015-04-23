@@ -123,14 +123,15 @@ class VMAPParser
 
   @parseAdSource: (adSourceElement) ->
     adSource = new AdSource()
-    adSource.allowMultipleAds = adSourceElement.getAttribute("allowMultipleAds")
-    adSource.followRedirects = adSourceElement.getAttribute("followRedirects")
+    adSource.allowMultipleAds = VMAPUtil.parseBoolean(adSourceElement.getAttribute("allowMultipleAds"))
+    adSource.followRedirects = VMAPUtil.parseBoolean(adSourceElement.getAttribute("followRedirects"))
     adSource.id = adSourceElement.getAttribute("id")
 
     for node in adSourceElement.childNodes
       switch node.nodeName
         when "vmap:VASTData"
           adSource.vastAdData = node.childNodes
+          adSource.templateType = "vast3" # Extend for original
 
         when "vmap:AdTagURI"
           adSource.adTagURI = @parseNodeText(node)

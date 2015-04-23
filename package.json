@@ -24,7 +24,6 @@
     },
     "dependencies":
     {
-        "coffee-script": "*",
-        "vast-client-js": "git://github.com/stevennick/vast-client-js.git#master"
+        "coffee-script": "*"
     }
 }
