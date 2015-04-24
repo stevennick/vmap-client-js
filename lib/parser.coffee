@@ -45,7 +45,6 @@ class VMAPParser
             @track(response.errorURLTemplates, ERRORCODE: 101)
 
         when "vmap:Extensions"
-          # TODO: implement extension support
           extensions = @parseExtensionElement node
 
     complete = (errorAlreadyRaised = false) =>
@@ -72,12 +71,22 @@ class VMAPParser
     URLHandler.get url, options, (err, xml) =>
       @_parseSource err, xml, cb
 
+  ###*
+   * Parse extensions field
+   * @todo  implement extensions
+   * @param  {node} extensionsElement xml dom node for extensions
+   * @return {json}                   return extensions or xml document
+  ###
   @parseExtensionElement: (extensionsElement) ->
     return null
 
   @parseAdBreakElement: (adBreakElement) ->
     adBreak = new AdBreak()
 
+    ###*
+     * @todo May contains multiple break type.
+     * @type {[type]}
+    ###
     adBreak.breakType = adBreakElement.getAttribute("breakType")
     adBreak.breakId = adBreakElement.getAttribute("breakId")
     adBreak.timeOffset = adBreakElement.getAttribute("timeOffset")

@@ -16,7 +16,7 @@ urlFor = (relpath) ->
 
 describe 'VMAPParser', ->
   describe '#parser', ->
-    @options = {"foo":"bar"}
+    @options = {}
     @response = null
     _response = null
     # sys.puts(sys.inspect(urlFor('PlayerTestVMAP.xml')))
