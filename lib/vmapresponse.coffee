@@ -1,5 +1,7 @@
 class VMAPResponse
-  constructor: ->
+
+  constructor: () ->
+
   @adbreaks: []
 
 module.exports = VMAPResponse
