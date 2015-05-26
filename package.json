@@ -12,7 +12,7 @@
     "scripts":
     {
         "test": "mocha --compilers coffee:coffee-script/register --timeout 5000",
-        "bundle": "browserify -s VMAP -c 'coffee -scb' src/index.coffee -o vmap-client.js"
+        "bundle": "browserify -s VMAP -c 'coffee -scb' lib/index.coffee -o vmap-client.js"
     },
     "devDependencies":
     {
