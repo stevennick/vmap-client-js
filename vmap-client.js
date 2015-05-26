@@ -432,7 +432,7 @@ VMAPUtil = (function() {
     test: false
   };
 
-  VMAPUtil.parseBoolean(function(string) {
+  VMAPUtil.parseBoolean = function(string) {
     var bool;
     bool = (function() {
       switch (false) {
@@ -446,7 +446,7 @@ VMAPUtil = (function() {
       return bool;
     }
     return void 0;
-  });
+  };
 
   return VMAPUtil;
 

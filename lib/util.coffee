@@ -2,7 +2,7 @@ class VMAPUtil
   @options:
     test: false
 
-  @parseBoolean (string) ->
+  @parseBoolean: (string) ->
     bool = switch
       when string.toLowerCase() == 'true' then true
       when string.toLowerCase() == 'false' then false
