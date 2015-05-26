@@ -1,0 +1,27 @@
+{
+  "name": "vmap-client-js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/stevennick/vmap-client-js",
+  "authors": [
+    "Stevennick Ciou <stevennick@gmail.com>"
+  ],
+  "description": "A plugin that parse VMAP messages.",
+  "main": "vmap-client.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "vmap",
+    "vast",
+    "web"
+  ],
+  "license": "https://github.com/stevennick/vmap-client-js/LICENSE",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
