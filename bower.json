@@ -7,15 +7,12 @@
   ],
   "description": "A plugin that parse VMAP messages.",
   "main": "vmap-client.js",
-  "moduleType": [
-    "globals"
-  ],
   "keywords": [
     "vmap",
     "vast",
     "web"
   ],
-  "license": "https://github.com/stevennick/vmap-client-js/LICENSE",
+  "licenses": [{"type": "MIT", "url": "https://github.com/stevennick/vmap-client-js/raw/master/LICENSE"}],
   "private": true,
   "ignore": [
     "**/.*",
