@@ -6,3 +6,4 @@ vast-client.js
 src/*.js
 build/*
 *.glue
+npm-debug.log
