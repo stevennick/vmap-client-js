@@ -1,6 +1,7 @@
 VMAPUtil = require './vmaputil.coffee'
+EventEmitter = require('events').EventEmitter
 
-class EventTracker
+class EventTracker extends EventEmitter
 
   constructor: (trackingEvents) ->
     @trackingEvents = trackingEvents

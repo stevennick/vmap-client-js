@@ -117,16 +117,17 @@ class VMAPParser
 
   @parseTrackingEvent: (trackingEventElement) ->
     trackingEvent = {}
-    for trackingEvent in trackingEventElement.childNodes
-      switch trackingEvent.getAttribute("event")
+    for trackingElement in trackingEventElement.childNodes
+      continue if trackingElement.getAttribute == undefined
+      switch trackingElement.getAttribute("event")
         when "breakStart"
-          trackingEvent.breakStart = parseNodeText(trackingEvent)
+          trackingEvent.breakStart = @parseNodeText(trackingElement)
 
         when "breakEnd"
-          trackingEvent.breakEnd = parseNodeText(trackingEvent)
+          trackingEvent.breakEnd = @parseNodeText(trackingElement)
 
         when "error"
-          trackingEvent.error = parseNodeText(trackingEvent)
+          trackingEvent.error = @parseNodeText(trackingElement)
 
     return trackingEvent
 
