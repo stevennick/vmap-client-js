@@ -4,7 +4,7 @@ expect = chai.expect
 should = chai.should()
 should
 
-{VMAPParser} = require '../lib/parser'
+VMAPParser = require '../lib/parser'
 EventTracker = require '../lib/eventtracker'
 
 urlFor = (relpath) ->

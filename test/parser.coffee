@@ -5,7 +5,7 @@ expect = chai.expect
 should = chai.should()
 should
 
-{VMAPParser} = require '../lib/parser'
+VMAPParser = require '../lib/parser'
 
 puts = (obj) ->
   sys.puts(sys.inspect(obj))
