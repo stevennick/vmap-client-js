@@ -1,4 +1,4 @@
-VMAPUtil = require './vmaputil'
+VMAPUtil = require './vmaputil.coffee'
 
 class EventTracker
 

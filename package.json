@@ -1,29 +1,47 @@
 {
-    "name": "vmap-client-js",
-    "author": "Stevennick Ciou <stevennick@gmail.com>",
-    "version": "0.0.1",
-    "description": "Javascript VMAP Client",
-    "keywords": ["vmap", "vast", "ad", "advertising", "iab", "in-stream", "video"],
-    "repository": {"type": "git", "url": "https://github.com/stevennick/vmap-client-js"},
-    "licenses": [{"type": "MIT", "url": "https://github.com/stevennick/vmap-client-js/raw/master/LICENSE"}],
-    "engines": {
-        "node": "0.12.0"
-    },
-    "scripts":
+  "name": "vmap-client-js",
+  "author": "Stevennick Ciou <stevennick@gmail.com>",
+  "version": "0.0.1",
+  "description": "Javascript VMAP Client",
+  "keywords": [
+    "vmap",
+    "vast",
+    "ad",
+    "advertising",
+    "iab",
+    "in-stream",
+    "video"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevennick/vmap-client-js"
+  },
+  "licenses": [
     {
-        "test": "mocha --compilers coffee:coffee-script/register --timeout 5000",
-        "bundle": "browserify -s VMAP -c 'coffee -scb' lib/index.coffee -o vmap-client.js"
-    },
-    "devDependencies":
-    {
-        "coffee-script": "*",
-        "mocha": "*",
-        "should": "*",
-        "chai": "*",
-        "xmldom": "*"
-    },
-    "dependencies":
-    {
-        "coffee-script": "*"
+      "type": "MIT",
+      "url": "https://github.com/stevennick/vmap-client-js/raw/master/LICENSE"
     }
+  ],
+  "engines": {
+    "node": "0.12.0"
+  },
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register --timeout 5000",
+    "bundle": "browserify -s VMAP -c 'coffee -scb' lib/index.coffee -o vmap-client.js"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "coffee-script": "*",
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.10.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^3.2.0",
+    "mocha": "*",
+    "should": "*",
+    "time-grunt": "^1.2.1",
+    "xmldom": "*"
+  },
+  "dependencies": {
+    "coffee-script": "*"
+  }
 }
