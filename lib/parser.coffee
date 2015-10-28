@@ -117,24 +117,27 @@ class VMAPParser
 
   @parseTrackingEvent: (trackingEventElement) ->
     trackingEvent = {}
+    trackingEvent.breakStart = []
+    trackingEvent.breakEnd = []
+    trackingEvent.error = []
     for trackingElement in trackingEventElement.childNodes
       continue if trackingElement.getAttribute == undefined
       switch trackingElement.getAttribute("event")
         when "breakStart"
-          trackingEvent.breakStart = @parseNodeText(trackingElement)
+          trackingEvent.breakStart.push(@parseNodeText(trackingElement))
 
         when "breakEnd"
-          trackingEvent.breakEnd = @parseNodeText(trackingElement)
+          trackingEvent.breakEnd.push(@parseNodeText(trackingElement))
 
         when "error"
-          trackingEvent.error = @parseNodeText(trackingElement)
+          trackingEvent.error.push(@parseNodeText(trackingElement))
 
     return trackingEvent
 
   @parseAdSource: (adSourceElement) ->
     adSource = new AdSource()
-    adSource.allowMultipleAds = VMAPUtil.parseBoolean(adSourceElement.getAttribute("allowMultipleAds"))
-    adSource.followRedirects = VMAPUtil.parseBoolean(adSourceElement.getAttribute("followRedirects"))
+    adSource.allowMultipleAds = VMAPUtil.parseBoolean(adSourceElement.getAttribute('allowMultipleAds'))
+    adSource.followRedirects = VMAPUtil.parseBoolean(adSourceElement.getAttribute('followRedirects'))
     adSource.id = adSourceElement.getAttribute("id")
 
     for node in adSourceElement.childNodes
