@@ -25,10 +25,20 @@ VMAP.client.get('/test/PlayerTestVMAP.xml', null, function(cb) {
 });
 ```
 
+### Development & Contributing
+
+Make sure you have executed `npm install` after clone this project. This step is need to exetuce only once.
+
 ## Build
 
-TBD...
+After install all required dependencies, type:
+
+> npm run-script bundle
+
+To update binary code.
 
 ## Testing
 
-npm test
+> npm test
+
+
