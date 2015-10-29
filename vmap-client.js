@@ -191,7 +191,7 @@ VMAPParser = (function() {
     }
     response = new VMAPResponse();
     response.adbreaks = [];
-    if (!(((xml != null ? xml.documentElement : void 0) != null) && xml.documentElement.nodeName === ("VMAP" || "vmap:VMAP"))) {
+    if (!(((xml != null ? xml.documentElement : void 0) != null) && ((xml.documentElement.nodeName === 'VMAP') || (xml.documentElement.nodeName === 'vmap:VMAP')))) {
       return cb();
     }
     ref = xml.documentElement.childNodes;

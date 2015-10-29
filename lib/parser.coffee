@@ -28,7 +28,7 @@ class VMAPParser
     response = new VMAPResponse()
     response.adbreaks = [] # Hack
 
-    unless xml?.documentElement? and xml.documentElement.nodeName is ("VMAP" or "vmap:VMAP")
+    unless xml?.documentElement? and ((xml.documentElement.nodeName is 'VMAP') or (xml.documentElement.nodeName is 'vmap:VMAP'))
       return cb()
 
     for node in xml.documentElement.childNodes
