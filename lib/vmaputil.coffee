@@ -1,6 +1,8 @@
 class VMAPUtil
 
   @track: (URLTemplates, variables) ->
+    if !URLTemplates?
+      return
     URLs = @resolveURLTemplates(URLTemplates, variables)
     for URL in URLs
       if window?

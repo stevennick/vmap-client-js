@@ -521,6 +521,9 @@ VMAPUtil = (function() {
 
   VMAPUtil.track = function(URLTemplates, variables) {
     var URL, URLs, i, j, len, results;
+    if (URLTemplates == null) {
+      return;
+    }
     URLs = this.resolveURLTemplates(URLTemplates, variables);
     results = [];
     for (j = 0, len = URLs.length; j < len; j++) {
